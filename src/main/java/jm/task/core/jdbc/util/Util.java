@@ -6,18 +6,16 @@ import java.sql.SQLException;
 
 public class Util {
     // реализуйте настройку соеденения с БД
-    private static final String URL = "jdbc:mysql://localhost:3306/test";
-    private static final String USER_NAME = "ivan";
-    private static final String PASSWORD = "$@fxml5586&%DF";
-
-    private static Connection connection;
+    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String user = "ivan";
+    private static final String password = "$@fxml5586&%DF";
 
     public static Connection getConnection() {
         try {
-            connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            return DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return connection;
+        return null;
     }
 }

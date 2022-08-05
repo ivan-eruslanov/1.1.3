@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="test@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.41">
+    <root id="1">
+      <DefaultCasing>exact</DefaultCasing>
+      <ServerVersion>8.0.30</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="information_schema"/>
+    <schema id="3" parent="1" name="mysql"/>
+    <schema id="4" parent="1" name="performance_schema"/>
+    <schema id="5" parent="1" name="sys"/>
+    <schema id="6" parent="1" name="temp"/>
+    <schema id="7" parent="1" name="test">
+      <Current>1</Current>
+    </schema>
+    <schema id="8" parent="1" name="test_hiber"/>
+  </database-model>
+</dataSource>
