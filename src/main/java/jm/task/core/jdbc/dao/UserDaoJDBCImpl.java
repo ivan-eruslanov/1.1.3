@@ -20,12 +20,11 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try (Connection connection = Util.getConnection()) {
-            String sql = "CREATE TABLE IF NOT EXISTS `test`.`users`" +
-                    "(id bigint not null auto_increment, " +
-                    "name varchar(50), " +
-                    "lastName varchar(50), " +
-                    "age tinyint, " +
-                    "PRIMARY KEY (id))";
+            String sql = "CREATE TABLE IF NOT EXISTS `test`.`users` " +
+                    "(id BIGINT AUTO_INCREMENT PRIMARY KEY, " +
+                    "name VARCHAR(50) NOT NULL, " +
+                    "lastName VARCHAR(50) NOT NULL, " +
+                    "age TINYINT)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
             log.info("Ok. data base creating...");
@@ -47,7 +46,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) {
         try (Connection connection = Util.getConnection()) {
-            String sql = "INSERT INTO `test`.`users` VALUES(1, ?, ?, ?)";
+            String sql = "INSERT INTO `test`.`users` (name, lastName, age) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
