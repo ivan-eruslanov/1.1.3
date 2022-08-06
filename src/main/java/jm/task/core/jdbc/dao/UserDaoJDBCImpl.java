@@ -21,21 +21,22 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try (Connection connection = Util.getConnection()) {
-            String sql = "CREATE TABLE IF NOT EXISTS `test`.`users` " +
-                    "(id BIGINT AUTO_INCREMENT PRIMARY KEY, " +
-                    "name VARCHAR(50) NOT NULL, " +
-                    "lastName VARCHAR(50) NOT NULL, " +
-                    "age TINYINT)";
+            String sql = """
+                    CREATE TABLE IF NOT EXISTS `test`.`users`
+                    (id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(50) NOT NULL,
+                    lastName VARCHAR(50) NOT NULL,
+                    age TINYINT)""";
             connection.setAutoCommit(false);
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.executeUpdate();
                 connection.commit();
-                log.info("Ok. data base creating...");
+                log.info("Ok. table creating...");
             } catch (SQLException ex) {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing create data base failing..." + ex.getMessage());
+                log.warning("Missing create table failing..." + ex.getMessage());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,12 +50,12 @@ public class UserDaoJDBCImpl implements UserDao {
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.executeUpdate();
                 connection.commit();
-                log.info("Ok. data base deleting...");
+                log.info("Ok. table deleting...");
             } catch (SQLException ex) {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing delete data base failing..." + ex.getMessage());
+                log.warning("Missing delete table failing..." + ex.getMessage());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,7 +76,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing save user data base failing..." + ex.getMessage());
+                log.warning("Missing save user in table is failing..." + ex.getMessage());
             }
             System.out.println("User с именем " + name + " добавлен в базу данных");
         } catch (SQLException e) {
@@ -96,7 +97,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing remove user by id data base failing..." + ex.getMessage());
+                log.warning("Missing remove user by id table is failing..." + ex.getMessage());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,12 +120,12 @@ public class UserDaoJDBCImpl implements UserDao {
                     userList.add(user);
                 }
                 connection.commit();
-                log.info("Ok. all users...");
+                log.info("Ok. all users add in the table...");
             } catch (SQLException ex) {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing get all users failing..." + ex.getMessage());
+                log.warning("Missing get all users add is failing..." + ex.getMessage());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,12 +140,12 @@ public class UserDaoJDBCImpl implements UserDao {
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.executeUpdate();
                 connection.commit();
-                log.info("Ok. data base cleaning...");
+                log.info("Ok. table is a cleaning...");
             } catch (SQLException ex) {
                 if (connection != null) {
                     connection.rollback();
                 }
-                log.warning("Missing data base clean failing..." + ex.getMessage());
+                log.warning("Missing table is a clean failing..." + ex.getMessage());
             }
         } catch (SQLException e) {
             e.printStackTrace();
