@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class Util {
     // реализуйте настройку соеденения с БД
     private static final String url = "jdbc:mysql://localhost:3306/test";
-    private static final String user = "ivan";
-    private static final String password = "$@fxml5586&%DF";
+    private static final String user = "root";
+    private static final String password = "root";
 
     public static Connection getConnection() {
         try {
